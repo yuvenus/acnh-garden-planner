@@ -2,10 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { GardenComponent } from './garden/garden.component';
+import { GardenCellComponent } from './garden/garden-cell/garden-cell.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GardenComponent,
+    GardenCellComponent
   ],
   imports: [
     BrowserModule
