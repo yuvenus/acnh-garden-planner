@@ -1,0 +1,8 @@
+<p-dropdown [options]="options" 
+            [disabled]="disabled"
+            [filter]="true"
+            [(ngModel)]="selectedValue"
+            (onChange)="emitNewValue($event)"
+            [showTransitionOptions]="'0ms'"
+            [hideTransitionOptions]="'0ms'">
+        </p-dropdown>

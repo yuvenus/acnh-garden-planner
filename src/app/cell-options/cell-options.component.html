@@ -1,0 +1,12 @@
+<div class="cell-options-container">
+    <div class="cell-option">
+        <label class="cell-option-label">Flower</label>
+        <app-custom-dropdown [options]="cellOptions" [(selectedValue)]="selectedCellOption"></app-custom-dropdown>
+    </div>
+    <div class="cell-option">
+        <label class="cell-option-label">Color</label>
+        <app-custom-dropdown [options]="colorOptions" 
+                             [disabled]="selectedCellOption == contentEnum.EMPTY || selectedCellOption == contentEnum.FENCE"
+                             [(selectedValue)]="selectedColorOption"></app-custom-dropdown>
+    </div>
+</div>

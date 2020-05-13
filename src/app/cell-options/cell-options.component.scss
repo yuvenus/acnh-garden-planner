@@ -1,0 +1,15 @@
+.cell-options-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .cell-option {
+        display: flex;
+        flex-direction: column;
+
+        .cell-option-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+    }
+}
