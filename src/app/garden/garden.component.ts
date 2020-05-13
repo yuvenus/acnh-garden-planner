@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as enums from '../../enums';
 import { Subscription } from 'rxjs';
 import { CellOptionsService } from '../services/cell-options.service';
+import { contentClass } from '../classes/content.class';
 
 @Component({
   selector: 'app-garden',
@@ -16,13 +17,10 @@ export class GardenComponent implements OnInit, OnDestroy {
   gridSize = 20;
   grid = [];
 
-  currentSelections = {
-    cellOption: this.cellContentsEnum.EMPTY,
-    color: null
-  };
+  currentSelection = new contentClass;
 
   cellContents = {
-    content: this.currentSelections
+    content: this.currentSelection
   }
 
   cellOptionSubscription = new Subscription;
@@ -35,8 +33,10 @@ export class GardenComponent implements OnInit, OnDestroy {
       .fill(this.cellContents)
       .map(() => new Array(this.gridSize).fill(this.cellContents));
 
-    this.cellOptionSubscription = this.cellOptionsService.getSelectedCellOption().subscribe(cellOption => this.currentSelections.cellOption = cellOption);
-    this.colorOptionSubscription = this.cellOptionsService.getSelectedColorOption().subscribe(colorOption => this.currentSelections.color = colorOption);
+    this.cellOptionSubscription = this.cellOptionsService.getSelectedCellOption()
+      .subscribe(cellOption => this.currentSelection.cellOption = cellOption);
+    this.colorOptionSubscription = this.cellOptionsService.getSelectedColorOption()
+      .subscribe(colorOption => this.currentSelection.color = colorOption);
   }
 
   ngOnDestroy() {

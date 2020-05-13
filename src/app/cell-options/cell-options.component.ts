@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CellOptionsService } from '../services/cell-options.service';
 import * as enums from '../../enums';
 import * as lists from '../../lists';
 
@@ -19,9 +20,18 @@ export class CellOptionsComponent implements OnInit {
   selectedCellOption = this.contentEnum.EMPTY;
   selectedColorOption = this.colorEnum.RED;
 
-  constructor() { }
+  constructor(private cellOptionsService: CellOptionsService) { }
 
   ngOnInit(): void {
+  }
+
+  setCellOption(event) {
+    console.log('SETTING EVENT', event);
+    this.cellOptionsService.setSelectedCellOption(event)
+  }
+
+  setColorOption(event) {
+    this.cellOptionsService.setSelectedColorOption(event)
   }
 
 }

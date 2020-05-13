@@ -15,7 +15,7 @@ export class CellOptionsService {
   }
 
   setSelectedCellOption(cellOption) {
-    this.selectedCellOption = cellOption;
+    this.selectedCellOption.next(cellOption);
   }
 
   getSelectedColorOption() {
@@ -23,6 +23,6 @@ export class CellOptionsService {
   }
 
   setSelectedColorOption(colorOption) {
-    this.selectedColorOption = colorOption;
+    this.selectedColorOption.next(colorOption);
   }
 }

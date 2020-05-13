@@ -9,19 +9,19 @@ import { contentClass } from '../../classes/content.class';
 })
 export class GardenCellComponent implements OnInit {
 
-  @Input() content = new contentClass;
-  @Input() currentInputType = new contentClass;
+  content = new contentClass;
+  @Input() currentSelection = new contentClass;
 
   constructor() { }
 
   ngOnInit(): void { }
 
   changeType() {
-    if (this.content.equals(this.currentInputType)) {
-      this.content.reset();
+    if (this.content.equals(this.currentSelection)) {
+      this.content = this.content.reset();
     }
     else {
-      this.content = this.currentInputType;
+      this.content = this.currentSelection;
     }
   } 
 

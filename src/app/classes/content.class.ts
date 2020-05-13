@@ -7,9 +7,8 @@ export class contentClass {
     equals(compareTo: contentClass) {
         return this.cellOption == compareTo.cellOption && this.color == compareTo.color;
     }
-    
+
     reset() {
-        this.cellOption = enums.cellContents.EMPTY;
-        this.color = null;
+        return new contentClass;
     }
 }
