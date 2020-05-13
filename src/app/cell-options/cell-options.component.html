@@ -5,7 +5,7 @@
     </div>
     <div class="cell-option">
         <label class="cell-option-label">Color</label>
-        <app-custom-dropdown [options]="colorOptions" 
+        <app-custom-dropdown [options]="(colorOptions | disableColor:selectedCellOption)" 
                              [disabled]="selectedCellOption == contentEnum.EMPTY || selectedCellOption == contentEnum.FENCE"
                              [(selectedValue)]="selectedColorOption"
                              (selectedValueChange)="setColorOption($event)"></app-custom-dropdown>

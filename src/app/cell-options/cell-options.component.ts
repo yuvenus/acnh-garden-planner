@@ -26,7 +26,6 @@ export class CellOptionsComponent implements OnInit {
   }
 
   setCellOption(event) {
-    console.log('SETTING EVENT', event);
     this.cellOptionsService.setSelectedCellOption(event)
   }
 

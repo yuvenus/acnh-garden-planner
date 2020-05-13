@@ -12,13 +12,16 @@ import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.compo
 
 import { CellOptionsService } from './services/cell-options.service';
 
+import { DisableColorPipe } from './pipes/disable-color.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     GardenComponent,
     GardenCellComponent,
     CellOptionsComponent,
-    CustomDropdownComponent
+    CustomDropdownComponent,
+    DisableColorPipe
   ],
   imports: [
     BrowserModule,

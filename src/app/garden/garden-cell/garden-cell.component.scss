@@ -1,19 +1,218 @@
+$red: '.red';
+$orange: '.orange';
+$yellow: '.yellow';
+$green: '.green';
+$blue: '.blue';
+$purple: '.purple';
+$pink: '.pink';
+$white: '.white';
+$black: '.black';
+$gold: '.gold';
+
+$cosmos: '.cosmos';
+$hyacinth: '.hyacinth';
+$lily: '.lily';
+$mum: '.mum';
+$pansy: '.pansy';
+$rose: '.rose';
+$tulip: '.tulip';
+$windflower: '.windflower';
+
+
 .garden-cell {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     margin: 2px;
+    border: 1px silver solid;
 
     &.empty {
-        background-color: lightgray
+        background-color: white;
     }
     
-    &.grass {
+    &.fence {
         background-color: lightgreen;
     }
 
-    // &.cosmos {
-    //     &.red {
-    //         background-image: url('src/assets/flowers/cosmos-red')
-    //     }
-    // }
+    &#{$cosmos} {
+        &#{$red} {
+            content: url('../../../assets/flowers/cosmos-red.png');
+        }
+        &#{$orange} {
+            content: url('../../../assets/flowers/cosmos-orange.png');
+        }
+        &#{$yellow} {
+            content: url('../../../assets/flowers/cosmos-yellow.png');
+        }
+        &#{$pink} {
+            content: url('../../../assets/flowers/cosmos-pink.png');
+        }
+        &#{$white} {
+            content: url('../../../assets/flowers/cosmos-white.png');
+        }
+        &#{$black} {
+            content: url('../../../assets/flowers/cosmos-black.png');
+        }
+    }
+
+    &#{$hyacinth} {
+        &#{$red} {
+            content: url('../../../assets/flowers/hyacinth-red.png');
+        }
+        &#{$orange} {
+            content: url('../../../assets/flowers/hyacinth-orange.png');
+        }
+        &#{$yellow} {
+            content: url('../../../assets/flowers/hyacinth-yellow.png');
+        }
+        &#{$blue} {
+            content: url('../../../assets/flowers/hyacinth-blue.png');
+        }
+        &#{$purple} {
+            content: url('../../../assets/flowers/hyacinth-purple.png');
+        }
+        &#{$pink} {
+            content: url('../../../assets/flowers/hyacinth-pink.png');
+        }
+        &#{$white} {
+            content: url('../../../assets/flowers/hyacinth-white.png');
+        }
+    }
+
+    &#{$lily} {
+        &#{$red} {
+            content: url('../../../assets/flowers/lily-red.png');
+        }
+        &#{$orange} {
+            content: url('../../../assets/flowers/lily-orange.png');
+        }
+        &#{$yellow} {
+            content: url('../../../assets/flowers/lily-yellow.png');
+        }
+        &#{$pink} {
+            content: url('../../../assets/flowers/lily-pink.png');
+        }
+        &#{$white} {
+            content: url('../../../assets/flowers/lily-white.png');
+        }
+        &#{$black} {
+            content: url('../../../assets/flowers/lily-black.png');
+        }
+    }
+
+    &#{$mum} {
+        &#{$red} {
+            content: url('../../../assets/flowers/mum-red.png');
+        }
+        &#{$yellow} {
+            content: url('../../../assets/flowers/mum-yellow.png');
+        }
+        &#{$green} {
+            content: url('../../../assets/flowers/mum-green.png');
+        }
+        &#{$purple} {
+            content: url('../../../assets/flowers/mum-purple.png');
+        }
+        &#{$pink} {
+            content: url('../../../assets/flowers/mum-pink.png');
+        }
+        &#{$white} {
+            content: url('../../../assets/flowers/mum-white.png');
+        }
+    }
+
+    &#{$pansy} {
+        &#{$red} {
+            content: url('../../../assets/flowers/pansy-red.png');
+        }
+        &#{$orange} {
+            content: url('../../../assets/flowers/pansy-orange.png');
+        }
+        &#{$yellow} {
+            content: url('../../../assets/flowers/pansy-yellow.png');
+        }
+        &#{$blue} {
+            content: url('../../../assets/flowers/pansy-blue.png');
+        }
+        &#{$purple} {
+            content: url('../../../assets/flowers/pansy-purple.png');
+        }
+        &#{$white} {
+            content: url('../../../assets/flowers/pansy-white.png');
+        }
+    }
+
+    &#{$rose} {
+        &#{$red} {
+            content: url('../../../assets/flowers/rose-red.png');
+        }
+        &#{$orange} {
+            content: url('../../../assets/flowers/rose-orange.png');
+        }
+        &#{$yellow} {
+            content: url('../../../assets/flowers/rose-yellow.png');
+        }
+        &#{$blue} {
+            content: url('../../../assets/flowers/rose-blue.png');
+        }
+        &#{$purple} {
+            content: url('../../../assets/flowers/rose-purple.png');
+        }
+        &#{$pink} {
+            content: url('../../../assets/flowers/rose-pink.png');
+        }
+        &#{$white} {
+            content: url('../../../assets/flowers/rose-white.png');
+        }
+        &#{$black} {
+            content: url('../../../assets/flowers/rose-black.png');
+        }
+        &#{$gold} {
+            content: url('../../../assets/flowers/rose-black.png');
+        }
+    }
+
+    &#{$tulip} {
+        &#{$red} {
+            content: url('../../../assets/flowers/tulip-red.png');
+        }
+        &#{$orange} {
+            content: url('../../../assets/flowers/tulip-orange.png');
+        }
+        &#{$yellow} {
+            content: url('../../../assets/flowers/tulip-yellow.png');
+        }
+        &#{$purple} {
+            content: url('../../../assets/flowers/tulip-purple.png');
+        }
+        &#{$pink} {
+            content: url('../../../assets/flowers/tulip-pink.png');
+        }
+        &#{$white} {
+            content: url('../../../assets/flowers/tulip-white.png');
+        }
+        &#{$black} {
+            content: url('../../../assets/flowers/tulip-black.png');
+        }
+    }
+
+    &#{$windflower} {
+        &#{$red} {
+            content: url('../../../assets/flowers/windflower-red.png');
+        }
+        &#{$orange} {
+            content: url('../../../assets/flowers/windflower-orange.png');
+        }
+        &#{$blue} {
+            content: url('../../../assets/flowers/windflower-blue.png');
+        }
+        &#{$purple} {
+            content: url('../../../assets/flowers/windflower-purple.png');
+        }
+        &#{$pink} {
+            content: url('../../../assets/flowers/windflower-pink.png');
+        }
+        &#{$white} {
+            content: url('../../../assets/flowers/windflower-white.png');
+        }
+    }
 }

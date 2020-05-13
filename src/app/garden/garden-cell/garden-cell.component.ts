@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { cellContents } from '../../../enums';
 import { contentClass } from '../../classes/content.class';
 
 @Component({
@@ -18,10 +17,11 @@ export class GardenCellComponent implements OnInit {
 
   changeType() {
     if (this.content.equals(this.currentSelection)) {
-      this.content = this.content.reset();
+      this.content = new contentClass;
     }
     else {
-      this.content = this.currentSelection;
+      this.content.cellOption = this.currentSelection.cellOption;
+      this.content.color = this.currentSelection.color;
     }
   } 
 
