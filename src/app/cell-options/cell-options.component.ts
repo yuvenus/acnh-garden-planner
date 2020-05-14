@@ -23,7 +23,7 @@ export class CellOptionsComponent implements OnInit {
   showClearConfirmation = false;
   showChangeGridConfirmation = false;
 
-  newGridSize = 2;
+  newGridSize = 20;
 
   constructor(private cellOptionsService: CellOptionsService) { }
 
@@ -31,22 +31,31 @@ export class CellOptionsComponent implements OnInit {
   }
 
   setCellOption(event) {
-    this.cellOptionsService.setSelectedCellOption(event)
+    this.cellOptionsService.setCellOptionsChanges('selectedCellOption', event)
   }
 
   setColorOption(event) {
-    this.cellOptionsService.setSelectedColorOption(event)
+    this.cellOptionsService.setCellOptionsChanges('selectedColorOption', event)
   }
 
   clearGrid() {
-    this.cellOptionsService.setClearGridConfirmation(true);
-    this.cellOptionsService.setClearGridConfirmation(false);
+    this.cellOptionsService.setCellOptionsChanges('clearGridConfirmation', true);
+    this.cellOptionsService.setCellOptionsChanges('clearGridConfirmation', false);
     this.showClearConfirmation = false;
   }
 
   changeGridSize() {
-    this.cellOptionsService.setGridSize(+this.newGridSize);
+    this.cellOptionsService.setCellOptionsChanges('gridSize', +this.newGridSize);
     this.showChangeGridConfirmation = false;
   }
 
+  importConfig() {
+    this.cellOptionsService.setCellOptionsChanges('importConfig', true);
+    this.cellOptionsService.setCellOptionsChanges('importConfig', false);
+  }
+
+  exportConfig() {
+    this.cellOptionsService.setCellOptionsChanges('exportConfig', true);
+    this.cellOptionsService.setCellOptionsChanges('exportConfig', false);
+  }
 }

@@ -24,42 +24,33 @@ export class GardenComponent implements OnInit, OnDestroy {
     content: new contentClass
   }
 
-  cellOptionSubscription = new Subscription;
-  colorOptionSubscription = new Subscription;
-  clearGridSubscription = new Subscription;
-  gridSizeSubscription = new Subscription;
+  cellOptionsChangesSubscription = new Subscription;
 
   constructor(private cellOptionsService: CellOptionsService) { }
 
   ngOnInit(): void {
     this.initGrid(this.gridSize);
 
-    this.cellOptionSubscription = this.cellOptionsService.getSelectedCellOption()
-      .subscribe(cellOption => this.currentSelection.cellOption = cellOption);
-    this.colorOptionSubscription = this.cellOptionsService.getSelectedColorOption()
-      .subscribe(colorOption => this.currentSelection.color = colorOption);
-
-    this.clearGridSubscription = this.cellOptionsService.getClearGridConfirmation()
-      .subscribe(clearGridConfirmation => {
-        if (clearGridConfirmation) {
+    this.cellOptionsChangesSubscription = this.cellOptionsService.getCellOptionsChanges()
+      .subscribe(cellObj => {
+        if (this.currentSelection.cellOption != cellObj.selectedCellOption) {
+          this.currentSelection.cellOption = cellObj.selectedCellOption;
+        }
+        if (this.currentSelection.color != cellObj.selectedColorOption) {
+          this.currentSelection.color = cellObj.selectedColorOption;
+        }
+        if (cellObj.clearGridConfirmation) {
           this.initGrid(this.gridSize);
         }
-      });
-
-    this.gridSizeSubscription = this.cellOptionsService.getGridSize()
-      .subscribe(newGridSize => {
-        if (this.gridSize != newGridSize) {
-          this.gridSize = newGridSize;
+        if (this.gridSize != cellObj.gridSize) {
+          this.gridSize = cellObj.gridSize;
           this.reprocessGrid(this.gridSize);
         }
       })
   }
 
   ngOnDestroy() {
-    this.cellOptionSubscription.unsubscribe();
-    this.colorOptionSubscription.unsubscribe();
-    this.clearGridSubscription.unsubscribe();
-    this.gridSizeSubscription.unsubscribe();
+    this.cellOptionsChangesSubscription.unsubscribe();
   }
 
   initGrid(gridSize) {

@@ -6,42 +6,25 @@ import * as enums from '../../enums';
   providedIn: 'root'
 })
 export class CellOptionsService {
-  selectedCellOption = new BehaviorSubject(enums.cellContents.EMPTY);
-  selectedColorOption = new BehaviorSubject(enums.colors.RED);
-  clearGridConfirmation = new BehaviorSubject(false);
-  gridSize = new BehaviorSubject(20);
+  cellOptionsObj = {
+    selectedCellOption: enums.cellContents.EMPTY,
+    selectedColorOption: enums.colors.RED,
+    clearGridConfirmation: false,
+    gridSize: 20,
+    importConfig: false,
+    exportConfig: false
+  }
+
+  cellOptionsChanges = new BehaviorSubject(this.cellOptionsObj);
 
   constructor() { }
 
-  getSelectedCellOption() {
-    return this.selectedCellOption.asObservable();
+  getCellOptionsChanges () {
+    return this.cellOptionsChanges.asObservable();
   }
 
-  setSelectedCellOption(cellOption) {
-    this.selectedCellOption.next(cellOption);
-  }
-
-  getSelectedColorOption() {
-    return this.selectedColorOption.asObservable();
-  }
-
-  setSelectedColorOption(colorOption) {
-    this.selectedColorOption.next(colorOption);
-  }
-
-  getClearGridConfirmation() {
-    return this.clearGridConfirmation.asObservable();
-  }
-
-  setClearGridConfirmation(clearGrid) {
-    this.clearGridConfirmation.next(clearGrid);
-  }
-
-  getGridSize() {
-    return this.gridSize.asObservable();
-  }
-
-  setGridSize(size) {
-    this.gridSize.next(size);
+  setCellOptionsChanges(type, value) {
+    this.cellOptionsObj[type] = value;
+    this.cellOptionsChanges.next(this.cellOptionsObj);
   }
 }

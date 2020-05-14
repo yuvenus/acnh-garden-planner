@@ -41,4 +41,12 @@
         <label class="form-label">Change Grid Size</label>
         <button pButton type="button" label="Change Grid Size" class="ui-button-success" (click)="showChangeGridConfirmation = true"></button>
     </div>
+    <div class="form-group">
+        <label class="form-label">Import Config</label>
+        <button pButton type="button" label="Import" (click)="importConfig()"></button>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Export Config</label>
+        <button pButton type="button" label="Export" class="ui-button-secondary" (click)="exportConfig()"></button>
+    </div>
 </div>
