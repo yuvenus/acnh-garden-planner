@@ -22,3 +22,15 @@
 .dialog-content {
     margin: 15px;
 }
+
+.file-upload-button {
+    position: relative;
+    input {
+        position: absolute;
+        left: 0px;
+        width: 75px;
+        height: 30px;
+        opacity: 0;
+        cursor: pointer;
+    }
+}

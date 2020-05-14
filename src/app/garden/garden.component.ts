@@ -36,15 +36,21 @@ export class GardenComponent implements OnInit, OnDestroy {
         if (this.currentSelection.cellOption != cellObj.selectedCellOption) {
           this.currentSelection.cellOption = cellObj.selectedCellOption;
         }
-        if (this.currentSelection.color != cellObj.selectedColorOption) {
+        else if (this.currentSelection.color != cellObj.selectedColorOption) {
           this.currentSelection.color = cellObj.selectedColorOption;
         }
-        if (cellObj.clearGridConfirmation) {
+        else if (cellObj.clearGridConfirmation) {
           this.initGrid(this.gridSize);
         }
-        if (this.gridSize != cellObj.gridSize) {
+        else if (this.gridSize != cellObj.gridSize) {
           this.gridSize = cellObj.gridSize;
           this.reprocessGrid(this.gridSize);
+        }
+        else if (cellObj.importConfig.import) {
+          this.importConfig(cellObj.importConfig.file);
+        }
+        else if (cellObj.exportConfig) {
+          this.exportConfig();
         }
       })
   }
@@ -82,9 +88,78 @@ export class GardenComponent implements OnInit, OnDestroy {
     }
   }
 
-  createEmptyRows(size, contents) {
+  private createEmptyRows(size, contents) {
     return new Array(size)
       .fill(0)
       .map(() => cloneDeep(contents))
   }
+
+  importConfig(event) {
+    if (event && event.target && event.target.files && event.target.files.length > 0) {
+      let finalString = '';
+      let tempGrid = [];
+      const file = event.target.files[0];
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        const fileString = fileReader.result.toString();
+        finalString = fileString;
+      }
+      
+      fileReader.onloadend = () => {
+        tempGrid = finalString.split('\n');
+        tempGrid = tempGrid.map(row => {
+          let splitRow = row.split(',');
+          splitRow = splitRow.map(
+            inside => {
+              const insideSplit = inside.split('|');
+              if (insideSplit.length == 2) {
+                return ({content: {cellOption: insideSplit[0], color: insideSplit[1]}})
+              }
+              return ({content: new contentClass});
+            }
+          );
+          return splitRow;
+        });
+  
+        this.grid = tempGrid;
+
+        console.log(tempGrid);
+      }
+  
+      fileReader.readAsText(file);
+    }
+  }
+
+  exportConfig() {
+    let csvContent = [];
+    let csvString = '';
+    for (let row of this.grid) {
+      let rowList = [];
+      for (let cell of row) {
+        rowList.push(`${cell.content.cellOption}|${cell.content.color}`);
+      }
+      csvContent.push(`${rowList.join(',')}`);
+    }
+
+    csvString = csvContent.join('\n');
+
+    // thanks stackoverflow https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side
+    var blob = new Blob([csvString], { type: 'text/plain' });
+    if (navigator.msSaveBlob) { // IE 10+
+        navigator.msSaveBlob(blob, "my_garden.txt");
+    } else {
+        const link = document.createElement("a");
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "my_garden.txt");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+  }
+    
 }

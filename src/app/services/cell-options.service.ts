@@ -11,7 +11,7 @@ export class CellOptionsService {
     selectedColorOption: enums.colors.RED,
     clearGridConfirmation: false,
     gridSize: 20,
-    importConfig: false,
+    importConfig: {import: false, file: null},
     exportConfig: false
   }
 

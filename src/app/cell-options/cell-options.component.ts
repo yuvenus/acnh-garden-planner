@@ -25,6 +25,8 @@ export class CellOptionsComponent implements OnInit {
 
   newGridSize = 20;
 
+  fileInput = null;
+
   constructor(private cellOptionsService: CellOptionsService) { }
 
   ngOnInit(): void {
@@ -49,9 +51,11 @@ export class CellOptionsComponent implements OnInit {
     this.showChangeGridConfirmation = false;
   }
 
-  importConfig() {
-    this.cellOptionsService.setCellOptionsChanges('importConfig', true);
-    this.cellOptionsService.setCellOptionsChanges('importConfig', false);
+  importConfig(event) {
+    this.cellOptionsService.setCellOptionsChanges('importConfig', {import: true, file: event});
+    this.cellOptionsService.setCellOptionsChanges('importConfig', {import: false, file: null});
+
+    this.fileInput = null;
   }
 
   exportConfig() {
