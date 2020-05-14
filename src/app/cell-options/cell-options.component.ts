@@ -20,6 +20,11 @@ export class CellOptionsComponent implements OnInit {
   selectedCellOption = this.contentEnum.EMPTY;
   selectedColorOption = this.colorEnum.RED;
 
+  showClearConfirmation = false;
+  showChangeGridConfirmation = false;
+
+  newGridSize = 2;
+
   constructor(private cellOptionsService: CellOptionsService) { }
 
   ngOnInit(): void {
@@ -31,6 +36,17 @@ export class CellOptionsComponent implements OnInit {
 
   setColorOption(event) {
     this.cellOptionsService.setSelectedColorOption(event)
+  }
+
+  clearGrid() {
+    this.cellOptionsService.setClearGridConfirmation(true);
+    this.cellOptionsService.setClearGridConfirmation(false);
+    this.showClearConfirmation = false;
+  }
+
+  changeGridSize() {
+    this.cellOptionsService.setGridSize(+this.newGridSize);
+    this.showChangeGridConfirmation = false;
   }
 
 }

@@ -1,13 +1,44 @@
+<p-dialog header="Clear Grid?" [(visible)]="showClearConfirmation" [draggable]="false">
+    <div class="dialog-content">
+        Are you sure you want to clear the grid?
+    </div>
+    <p-footer>
+        <button pButton type="button" label="Clear" class="ui-button-danger" (click)="clearGrid()"></button>
+        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showClearConfirmation = false"></button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Change Grid Size" [(visible)]="showChangeGridConfirmation"[draggable]="false">
+    <div class="dialog-content">
+        <div class="form-group">
+            <label class="form-label">Changing the grid size may cause clipping to occur!</label>
+            <input pInputText type="text" pKeyFilter="pint" [(ngModel)]="newGridSize">
+        </div>
+    </div>
+    <p-footer>
+        <button pButton type="button" label="Change" class="ui-button-success" (click)="changeGridSize()"></button>
+        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showChangeGridConfirmation = false"></button>
+    </p-footer>
+</p-dialog>
+
 <div class="cell-options-container">
-    <div class="cell-option">
-        <label class="cell-option-label">Flower</label>
+    <div class="form-group">
+        <label class="form-label">Flower</label>
         <app-custom-dropdown [options]="cellOptions" [(selectedValue)]="selectedCellOption" (selectedValueChange)="setCellOption($event)"></app-custom-dropdown>
     </div>
-    <div class="cell-option">
-        <label class="cell-option-label">Color</label>
+    <div class="form-group">
+        <label class="form-label">Color</label>
         <app-custom-dropdown [options]="(colorOptions | disableColor:selectedCellOption)" 
                              [disabled]="selectedCellOption == contentEnum.EMPTY || selectedCellOption == contentEnum.FENCE"
                              [(selectedValue)]="selectedColorOption"
                              (selectedValueChange)="setColorOption($event)"></app-custom-dropdown>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Clear Grid</label>
+        <button pButton type="button" label="Clear" class="ui-button-danger" (click)="showClearConfirmation = true"></button>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Change Grid Size</label>
+        <button pButton type="button" label="Change Grid Size" class="ui-button-success" (click)="showChangeGridConfirmation = true"></button>
     </div>
 </div>

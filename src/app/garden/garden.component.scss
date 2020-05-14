@@ -1,4 +1,8 @@
 .garden-grid {
     display: flex;
-    
+    flex-direction: column;
+
+    .garden-grid-row {
+        display: flex;
+    }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { contentClass } from '../../classes/content.class';
 
 @Component({
@@ -8,8 +8,9 @@ import { contentClass } from '../../classes/content.class';
 })
 export class GardenCellComponent implements OnInit {
 
-  content = new contentClass;
   @Input() currentSelection = new contentClass;
+  @Input() content = new contentClass;
+  @Output() contentChange = new EventEmitter()
 
   constructor() { }
 
@@ -22,6 +23,8 @@ export class GardenCellComponent implements OnInit {
     else {
       this.content.cellOption = this.currentSelection.cellOption;
       this.content.color = this.currentSelection.color;
+
+      this.contentChange.emit(this.content);
     }
   } 
 

@@ -7,8 +7,13 @@ import { AppComponent } from './app.component';
 import { GardenComponent } from './garden/garden.component';
 import { GardenCellComponent } from './garden/garden-cell/garden-cell.component';
 import { CellOptionsComponent } from './cell-options/cell-options.component';
-import { DropdownModule } from 'primeng/dropdown';
 import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.component';
+
+import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { KeyFilterModule } from 'primeng/keyfilter';
+
 
 import { CellOptionsService } from './services/cell-options.service';
 
@@ -27,7 +32,10 @@ import { DisableColorPipe } from './pipes/disable-color.pipe';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    DropdownModule
+    DropdownModule,
+    ButtonModule,
+    DialogModule,
+    KeyFilterModule
   ],
   providers: [CellOptionsService],
   bootstrap: [AppComponent]

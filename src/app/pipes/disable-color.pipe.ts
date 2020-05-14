@@ -80,7 +80,7 @@ export class DisableColorPipe implements PipeTransform {
     }
 
     transform(colorOptions, selectedCellOption) {
-        if (selectedCellOption == enums.cellContents.EMPTY || selectedCellOption == enums.cellContents) {
+        if (selectedCellOption == enums.cellContents.EMPTY || selectedCellOption == enums.cellContents.FENCE) {
             return colorOptions;
         }
         else {

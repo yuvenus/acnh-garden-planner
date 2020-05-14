@@ -8,6 +8,8 @@ import * as enums from '../../enums';
 export class CellOptionsService {
   selectedCellOption = new BehaviorSubject(enums.cellContents.EMPTY);
   selectedColorOption = new BehaviorSubject(enums.colors.RED);
+  clearGridConfirmation = new BehaviorSubject(false);
+  gridSize = new BehaviorSubject(20);
 
   constructor() { }
 
@@ -25,5 +27,21 @@ export class CellOptionsService {
 
   setSelectedColorOption(colorOption) {
     this.selectedColorOption.next(colorOption);
+  }
+
+  getClearGridConfirmation() {
+    return this.clearGridConfirmation.asObservable();
+  }
+
+  setClearGridConfirmation(clearGrid) {
+    this.clearGridConfirmation.next(clearGrid);
+  }
+
+  getGridSize() {
+    return this.gridSize.asObservable();
+  }
+
+  setGridSize(size) {
+    this.gridSize.next(size);
   }
 }

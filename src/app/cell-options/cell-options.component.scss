@@ -1,15 +1,24 @@
 .cell-options-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 20px;
+}
 
-    .cell-option {
-        display: flex;
-        flex-direction: column;
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
 
-        .cell-option-label {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
+    &:nth-child(1) {
+        margin-left: 0px;
     }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+}
+
+.dialog-content {
+    margin: 15px;
 }

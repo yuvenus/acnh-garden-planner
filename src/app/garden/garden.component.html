@@ -1,7 +1,7 @@
 <div class="garden-grid">
     <div class="garden-grid-row" *ngFor="let row of grid">
         <div *ngFor="let cell of row">
-            <app-garden-cell [currentSelection]="currentSelection"></app-garden-cell>
+            <app-garden-cell [currentSelection]="currentSelection" [(content)]="cell.content"></app-garden-cell>
         </div>
     </div>
 </div>
