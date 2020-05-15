@@ -17,7 +17,8 @@ export class GardenCellComponent implements OnInit {
   ngOnInit(): void { }
 
   changeType() {
-    if (this.content.equals(this.currentSelection)) {
+    if (this.content.cellOption == this.currentSelection.cellOption && 
+        this.content.color == this.currentSelection.color) {
       this.content = new contentClass;
     }
     else {

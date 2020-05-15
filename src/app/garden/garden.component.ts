@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import * as enums from '../../enums';
 import { Subscription } from 'rxjs';
 import { CellOptionsService } from '../services/cell-options.service';
@@ -16,7 +16,7 @@ export class GardenComponent implements OnInit, OnDestroy {
   cellContentsEnum = enums.cellContents;
 
   gridSize = 20;
-  grid = [];
+  grid = localStorage.getItem('gardenGrid') ? JSON.parse(localStorage.getItem('gardenGrid')) : [];
 
   currentSelection = new contentClass;
 
@@ -26,10 +26,16 @@ export class GardenComponent implements OnInit, OnDestroy {
 
   cellOptionsChangesSubscription = new Subscription;
 
+  @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
+    localStorage.setItem('gardenGrid', JSON.stringify(this.grid));
+  }
+
   constructor(private cellOptionsService: CellOptionsService) { }
 
   ngOnInit(): void {
-    this.initGrid(this.gridSize);
+    if (this.grid === []) {
+      this.initGrid(this.gridSize);
+    }
 
     this.cellOptionsChangesSubscription = this.cellOptionsService.getCellOptionsChanges()
       .subscribe(cellObj => {
@@ -57,6 +63,8 @@ export class GardenComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.cellOptionsChangesSubscription.unsubscribe();
+
+    localStorage.setItem('gardenGrid', JSON.stringify(this.grid));
   }
 
   initGrid(gridSize) {
@@ -122,8 +130,6 @@ export class GardenComponent implements OnInit, OnDestroy {
         });
   
         this.grid = tempGrid;
-
-        console.log(tempGrid);
       }
   
       fileReader.readAsText(file);

@@ -6,13 +6,21 @@ html, body {
     display: flex;
     justify-content: center;
     align-content: center;
-    width: 100%;
-    height: 100%;
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
+    width: 100%;
+    position: relative;
 }
 
 body {
     // background-image: url('./assets/Animal\ Crossing\ Grass\ Remake\ Spring\ [HD]\ BY\ thenewhylton.png');
     background-image: url('./assets/Animal\ Crossing\ Grass\ Remake\ Spring\ [HD]\ BY\ thenewhylton\ 50\ opacity.png')
+}
+
+app-root {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

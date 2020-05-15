@@ -1,30 +1,7 @@
-<p-dialog header="Clear Grid?" [(visible)]="showClearConfirmation" [draggable]="false">
-    <div class="dialog-content">
-        Are you sure you want to clear the grid?
-    </div>
-    <p-footer>
-        <button pButton type="button" label="Clear" class="ui-button-danger" (click)="clearGrid()"></button>
-        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showClearConfirmation = false"></button>
-    </p-footer>
-</p-dialog>
-
-<p-dialog header="Change Grid Size" [(visible)]="showChangeGridConfirmation"[draggable]="false">
-    <div class="dialog-content">
-        <div class="form-group">
-            <label class="form-label">Changing the grid size may cause clipping to occur!</label>
-            <input pInputText type="text" pKeyFilter="pint" [(ngModel)]="newGridSize">
-        </div>
-    </div>
-    <p-footer>
-        <button pButton type="button" label="Change" class="ui-button-success" (click)="changeGridSize()"></button>
-        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showChangeGridConfirmation = false"></button>
-    </p-footer>
-</p-dialog>
-
 <div class="cell-options-container">
     <div class="form-group">
         <label class="form-label">Flower</label>
-        <app-custom-dropdown [options]="cellOptions" [(selectedValue)]="selectedCellOption" (selectedValueChange)="setCellOption($event)"></app-custom-dropdown>
+        <app-custom-dropdown [options]="cellOptions" [selectedValue]="selectedCellOption" (selectedValueChange)="setCellOption($event)"></app-custom-dropdown>
     </div>
     <div class="form-group">
         <label class="form-label">Color</label>
@@ -53,3 +30,26 @@
         <button pButton type="button" label="Export" class="ui-button-secondary" (click)="exportConfig()"></button>
     </div>
 </div>
+
+<p-dialog header="Clear Grid?" [(visible)]="showClearConfirmation" [draggable]="false">
+    <div class="dialog-content">
+        Are you sure you want to clear the grid?
+    </div>
+    <p-footer>
+        <button pButton type="button" label="Clear" class="ui-button-danger" (click)="clearGrid()"></button>
+        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showClearConfirmation = false"></button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Change Grid Size" [(visible)]="showChangeGridConfirmation"[draggable]="false">
+    <div class="dialog-content">
+        <div class="form-group">
+            <label class="form-label">Changing the grid size may cause clipping to occur!</label>
+            <input pInputText type="text" pKeyFilter="pint" [(ngModel)]="newGridSize">
+        </div>
+    </div>
+    <p-footer>
+        <button pButton type="button" label="Change" class="ui-button-success" (click)="changeGridSize()"></button>
+        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showChangeGridConfirmation = false"></button>
+    </p-footer>
+</p-dialog>
