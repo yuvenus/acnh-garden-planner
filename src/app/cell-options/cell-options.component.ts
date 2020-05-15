@@ -25,7 +25,7 @@ export class CellOptionsComponent implements OnInit {
   showClearConfirmation = false;
   showChangeGridConfirmation = false;
 
-  newGridSize = 20;
+  newGridSize = 0;
 
   fileInput = null;
 
@@ -37,7 +37,8 @@ export class CellOptionsComponent implements OnInit {
 
   setCellOption(event) {
     this.selectedCellOption = event;
-    if (!this.disableColorPipe.validColors[this.selectedCellOption].includes(this.selectedColorOption)) {
+    if (this.disableColorPipe.validColors[this.selectedCellOption] && 
+        !this.disableColorPipe.validColors[this.selectedCellOption].includes(this.selectedColorOption)) {
       this.selectedColorOption = enums.colors.RED;
       this.setColorOption(this.selectedColorOption);
     }

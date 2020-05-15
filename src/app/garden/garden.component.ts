@@ -15,7 +15,7 @@ export class GardenComponent implements OnInit, OnDestroy {
   // enums
   cellContentsEnum = enums.cellContents;
 
-  gridSize = 20;
+  gridSize = localStorage.getItem('gridSize') ? parseInt(localStorage.getItem('gridSize')) : 10;
   grid = localStorage.getItem('gardenGrid') ? JSON.parse(localStorage.getItem('gardenGrid')) : [];
 
   currentSelection = new contentClass;
@@ -28,6 +28,7 @@ export class GardenComponent implements OnInit, OnDestroy {
 
   @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
     localStorage.setItem('gardenGrid', JSON.stringify(this.grid));
+    localStorage.setItem('gridSize', this.gridSize.toString());
   }
 
   constructor(private cellOptionsService: CellOptionsService) { }
@@ -50,6 +51,7 @@ export class GardenComponent implements OnInit, OnDestroy {
         }
         else if (this.gridSize != cellObj.gridSize) {
           this.gridSize = cellObj.gridSize;
+          localStorage.setItem('gridSize', this.gridSize.toString());
           this.reprocessGrid(this.gridSize);
         }
         else if (cellObj.importConfig.import) {
@@ -94,6 +96,8 @@ export class GardenComponent implements OnInit, OnDestroy {
         .slice(0, gridSize)
         .map(row => row.slice(0, gridSize));
     }
+
+    localStorage.setItem('gardenGrid', JSON.stringify(this.grid));
   }
 
   private createEmptyRows(size, contents) {

@@ -10,7 +10,7 @@ export class CellOptionsService {
     selectedCellOption: enums.cellContents.EMPTY,
     selectedColorOption: enums.colors.RED,
     clearGridConfirmation: false,
-    gridSize: 20,
+    gridSize: localStorage.getItem('gridSize') ? parseInt(localStorage.getItem('gridSize')) : 10,
     importConfig: {import: false, file: null},
     exportConfig: false
   }
