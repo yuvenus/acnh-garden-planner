@@ -34,7 +34,7 @@ export class GardenComponent implements OnInit, OnDestroy {
   constructor(private cellOptionsService: CellOptionsService) { }
 
   ngOnInit(): void {
-    if (this.grid === []) {
+    if (this.grid.length === 0) {
       this.initGrid(this.gridSize);
     }
 
