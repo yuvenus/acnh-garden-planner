@@ -8,16 +8,16 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:prod": "NODE_ENV=production webpack -p -progress --colors --bail --optimize-dedupe --optimize-minimize",
-    "preinstall": "npm install -g angular-cli",
-    "postinstall": "npm run build:prod"  
+    "postinstall": "ng build --aot --target=production"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^9.1.6",
     "@angular/cdk": "^9.2.3",
+    "@angular/cli": "~9.1.5",
     "@angular/common": "~9.1.6",
     "@angular/compiler": "~9.1.6",
+    "@angular/compiler-cli": "~9.1.6",
     "@angular/core": "~9.1.6",
     "@angular/forms": "~9.1.6",
     "@angular/platform-browser": "~9.1.6",
@@ -32,8 +32,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.5",
-    "@angular/cli": "~9.1.5",
-    "@angular/compiler-cli": "~9.1.6",
     "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
