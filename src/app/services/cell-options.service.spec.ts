@@ -26,4 +26,17 @@ describe('CellOptionsService', () => {
       done();
     });
   });
+
+  it('#setCellOptionsChanges should set based on key', (done: DoneFn) => {
+    service.setCellOptionsChanges('selectedCellOption', enums.flowers.LILY);
+    service.setCellOptionsChanges('selectedColorOption', enums.colors.ORANGE);
+    service.setCellOptionsChanges('clearGridConfirmation', true);
+
+    service.getCellOptionsChanges().subscribe(value => {
+      expect(value.selectedCellOption).toBe(enums.flowers.LILY);
+      expect(value.selectedColorOption).toBe(enums.colors.ORANGE);
+      expect(value.clearGridConfirmation).toBe(true);
+      done();
+    })
+  })
 });
