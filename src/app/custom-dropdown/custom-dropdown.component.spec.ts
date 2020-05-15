@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CustomDropdownComponent } from './custom-dropdown.component';
+import { imports } from '../../imports';
 
 describe('CustomDropdownComponent', () => {
   let component: CustomDropdownComponent;
@@ -8,7 +9,8 @@ describe('CustomDropdownComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomDropdownComponent ]
+      declarations: [ CustomDropdownComponent ],
+      imports: imports
     })
     .compileComponents();
   }));
