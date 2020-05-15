@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:prod": "NODE_ENV=production webpack -p -progress --colors --bail --optimize-dedupe --optimize-minimize",
+    "preinstall": "npm install -g angular-cli",
     "postinstall": "npm run build:prod"  
   },
   "private": true,
