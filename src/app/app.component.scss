@@ -9,12 +9,17 @@
     width: 100%;
     position: relative;
     padding-top: 15px;
-    background-color: rgba(163, 163, 163, 0.85);
+    background-color: rgba(202, 202, 202, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     top: 0;
+}
+
+app-help {
+    position: absolute;
+    left: 45px;
 }
 
 app-credits {

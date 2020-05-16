@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import * as enums from '../../enums';
 
 @Component({
   selector: 'app-custom-dropdown',
@@ -7,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CustomDropdownComponent implements OnInit {
 
+  cellContentsEnum = enums.cellContents;
+  
   @Input() options;
   @Input() selectedValue;
   @Input() disabled = false;
