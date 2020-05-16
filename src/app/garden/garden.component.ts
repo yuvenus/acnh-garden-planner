@@ -18,6 +18,9 @@ export class GardenComponent implements OnInit, OnDestroy {
   gridSize = localStorage.getItem('gridSize') ? parseInt(localStorage.getItem('gridSize')) : 10;
   grid = localStorage.getItem('gardenGrid') ? JSON.parse(localStorage.getItem('gardenGrid')) : [];
 
+  pastStates = [];
+  futureStates = [];
+
   currentSelection = new contentClass;
 
   cellContents = {
@@ -29,6 +32,16 @@ export class GardenComponent implements OnInit, OnDestroy {
   @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
     localStorage.setItem('gardenGrid', JSON.stringify(this.grid));
     localStorage.setItem('gridSize', this.gridSize.toString());
+  }
+
+  // https://stackoverflow.com/questions/49920652/detect-ctrl-c-and-ctrl-v-in-an-input-from-browsers
+  @HostListener('window:keydown',['$event']) onKeyPress($event: KeyboardEvent) {
+        if(($event.ctrlKey || $event.metaKey) && $event.keyCode == 90) {
+            this.undo();
+        }
+        if(($event.ctrlKey || $event.metaKey) && $event.keyCode == 89) {
+            this.redo();
+        }
   }
 
   constructor(private cellOptionsService: CellOptionsService) { }
@@ -171,5 +184,26 @@ export class GardenComponent implements OnInit, OnDestroy {
         }
     }
   }
-    
+
+  updateHistory() {
+    if (this.pastStates.length >= 20) {
+      this.pastStates.shift();
+    }
+    this.pastStates.push(JSON.stringify(this.grid));
+    this.futureStates = [];
+  }
+
+  undo() {
+    if (this.pastStates.length > 0) {
+      this.futureStates.push(JSON.stringify(this.grid));
+      this.grid = JSON.parse(this.pastStates.pop());
+    }
+  }
+
+  redo() {
+    if (this.futureStates.length > 0) {
+      this.pastStates.push(JSON.stringify(this.grid));
+      this.grid = JSON.parse(this.futureStates.pop());
+    }
+  }
 }
