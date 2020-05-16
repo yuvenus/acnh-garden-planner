@@ -12,11 +12,15 @@ html, body {
     position: relative;
 
     .ui-dropdown {
-        border-style: none !important;
+        border-style: unset;
+        border: 2px solid white;
         background: none;
-        // background: rgba(255, 255, 255, 0.90);
         width: 150px;
         min-width: unset;
+
+        &:hover {
+            border-color: rgb(48, 97, 43) !important; 
+        }
 
         .ui-dropdown-trigger {
             background-color: unset;

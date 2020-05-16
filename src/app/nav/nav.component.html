@@ -1,10 +1,12 @@
 <div class="nav-options-container">
-    <div class="nav-item">
+    <!-- pTooltip="flowers" tooltipPosition="bottom" -->
+    <div class="nav-item"> 
         <app-custom-dropdown [type]="'flowers'"
                              [options]="cellOptions" 
                              [selectedValue]="selectedCellOption" 
                              (selectedValueChange)="setCellOption($event)"></app-custom-dropdown>
     </div>
+    <!-- pTooltip="colors" tooltipPosition="bottom" -->
     <div class="nav-item">
         <app-custom-dropdown [type]="'colors'"
                              [options]="(colorOptions | disableColor:selectedCellOption)" 

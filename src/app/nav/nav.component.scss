@@ -1,5 +1,6 @@
 .nav-options-container {
     width: 100%;
+    height: calc(100% - 40px);
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -8,9 +9,13 @@
     .nav-item {
         display: flex;
         align-items: center;
-        margin-left: 30px;
         color: white;
+        padding: 20px 30px;
         cursor: pointer;
+
+        &:hover {
+            background-color: rgb(68, 126, 61);
+        }
 
         &:nth-child(1) {
             margin-left: 0px;
@@ -32,12 +37,10 @@
         align-items: center;
         justify-content: center;
         position: absolute;
-        right: 25px;
+        right: 0px;
 
         .nav-item {
-            &:nth-child(2) {
-                margin-left: 15px;
-            }
+            height: 100%;
             .material-icons {
                 font-size: 30px;
             }
