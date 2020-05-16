@@ -33,7 +33,9 @@ export const imports = [
 ]
 
 import { NavService } from './app/services/nav.service';
+import { MouseDownService } from './app/services/mouse-down.service';
 
 export const providers = [
-    NavService
+    NavService,
+    MouseDownService
 ]
