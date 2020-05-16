@@ -1,0 +1,84 @@
+.nav-options-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        margin-left: 30px;
+        color: white;
+        cursor: pointer;
+
+        &:nth-child(1) {
+            margin-left: 0px;
+        }
+
+        .material-icons {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .nav-label {
+            font-weight: 600;
+        }
+    }
+
+    .nav-end {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 25px;
+
+        .nav-item {
+            &:nth-child(2) {
+                margin-left: 15px;
+            }
+            .material-icons {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+
+.dialog-content {
+    margin: 15px;
+    
+    .form-group {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }        
+    }
+
+    .dialog-input {
+        height: 25px;
+        border: 1px lightgray solid;
+        border-radius: 3px;
+        padding: 5px;
+        margin-top: 5px;
+    }
+}
+
+.file-upload-button {
+    display: flex;
+    align-items:center;
+    position: relative;
+    input {
+        position: absolute;
+        left: 0px;
+        width: 75px;
+        height: 30px;
+        opacity: 0;
+        cursor: pointer;
+    }
+}

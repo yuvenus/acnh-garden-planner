@@ -1,8 +1,36 @@
-<p-dropdown [options]="options" 
-            [disabled]="disabled"
-            [filter]="true"
-            [(ngModel)]="selectedValue"
-            (onChange)="emitNewValue($event)"
-            [showTransitionOptions]="'0ms'"
-            [hideTransitionOptions]="'0ms'">
-</p-dropdown>
+<ng-container *ngIf="type">
+    <p-dropdown *ngIf="type == 'flowers'"
+        [options]="options" 
+        [disabled]="disabled"
+        [filter]="true"
+        [(ngModel)]="selectedValue"
+        (onChange)="emitNewValue($event)"
+        [dropdownIcon]="'pi pi-caret-down'"
+        [showTransitionOptions]="'0ms'"
+        [hideTransitionOptions]="'0ms'">
+        <ng-template let-flower pTemplate="selectedItem">
+            <div class="selected-item">
+                <span class="material-icons dropdown-icon">local_florist</span>
+                <span class="selected-item-label">{{flower.label}}</span>
+            </div>
+        </ng-template>
+    </p-dropdown>
+
+    <p-dropdown *ngIf="type == 'colors'"
+        [options]="options" 
+        [disabled]="disabled"
+        [filter]="true"
+        [(ngModel)]="selectedValue"
+        (onChange)="emitNewValue($event)"
+        [dropdownIcon]="'pi pi-caret-down'"
+        [showTransitionOptions]="'0ms'"
+        [hideTransitionOptions]="'0ms'">
+        <ng-template let-color pTemplate="selectedItem">
+            <div class="selected-item {{color.label}}">
+                <span class="material-icons dropdown-icon">color_lens</span>                
+                <span class="selected-item-label">{{color.label}}</span>
+            </div>
+        </ng-template>
+    </p-dropdown>
+</ng-container>
+

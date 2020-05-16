@@ -13,6 +13,7 @@ export class CustomDropdownComponent implements OnInit {
   @Input() options;
   @Input() selectedValue;
   @Input() disabled = false;
+  @Input() type;
   @Output() selectedValueChange = new EventEmitter();
 
   constructor() { }

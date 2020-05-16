@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import * as enums from '../../enums';
 
-import { CellOptionsService } from './cell-options.service';
+import { NavService } from './nav.service';
 
-describe('CellOptionsService', () => {
-  let service: CellOptionsService;
+describe('NavService', () => {
+  let service: NavService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CellOptionsService);
+    service = TestBed.inject(NavService);
   });
 
   it('#getCellOptionChanges should return initialized object', (done: DoneFn) => {

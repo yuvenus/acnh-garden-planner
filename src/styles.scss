@@ -10,6 +10,23 @@ html, body {
     font-size: 15px;
     width: 100%;
     position: relative;
+
+    .ui-dropdown {
+        border-style: none !important;
+        background: none;
+        // background: rgba(255, 255, 255, 0.90);
+        width: 150px;
+        min-width: unset;
+
+        .ui-dropdown-trigger {
+            background-color: unset;
+            color: white;
+        }
+    }
+
+    .ui-inputtext {
+        background: none;
+    }
 }
 
 body {

@@ -2,14 +2,13 @@
     display: flex;
     flex-direction: column;
     margin-top: 120px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .nav-container {
     width: 100%;
-    position: relative;
-    padding-top: 15px;
-    background-color: rgba(202, 202, 202, 0.85);
+    padding: 20px 0;
+    background-color: rgba(10, 77, 1, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,12 +16,6 @@
     top: 0;
 }
 
-app-help {
-    position: absolute;
-    left: 45px;
-}
-
-app-credits {
-    position: absolute;
-    right: 45px;
+app-nav {
+    width: 100%;
 }

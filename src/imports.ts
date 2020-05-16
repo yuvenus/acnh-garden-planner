@@ -1,13 +1,13 @@
 import { GardenComponent } from './app/garden/garden.component';
 import { GardenCellComponent } from './app/garden/garden-cell/garden-cell.component';
-import { CellOptionsComponent } from './app/cell-options/cell-options.component';
+import { NavComponent } from './app/nav/nav.component';
 import { CustomDropdownComponent } from './app/custom-dropdown/custom-dropdown.component';
 import { DisableColorPipe } from './app/pipes/disable-color.pipe';
 
 export const declarations = [
     GardenComponent,
     GardenCellComponent,
-    CellOptionsComponent,
+    NavComponent,
     CustomDropdownComponent,
     DisableColorPipe
 ]
@@ -19,6 +19,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import { TooltipModule } from 'primeng/tooltip';
 
 export const imports = [
     BrowserModule,
@@ -27,11 +28,12 @@ export const imports = [
     DropdownModule,
     ButtonModule,
     DialogModule,
-    KeyFilterModule
+    KeyFilterModule,
+    TooltipModule
 ]
 
-import { CellOptionsService } from './app/services/cell-options.service';
+import { NavService } from './app/services/nav.service';
 
 export const providers = [
-    CellOptionsService
+    NavService
 ]

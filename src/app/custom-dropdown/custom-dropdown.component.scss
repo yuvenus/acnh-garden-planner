@@ -1,0 +1,55 @@
+$outline: -1px -1px 0 #f0f0f0, 1px -1px 0 #f0f0f0, -1px 1px 0 #f0f0f0, 1px 1px 0 #f0f0f0;
+
+.dropdown-icon {
+    font-size: 20px;
+}
+
+.selected-item {
+    display: flex;
+    align-items: center;
+    color: white;
+    
+    &.red {
+        color: rgb(255, 115, 115);
+        // text-shadow: $outline;
+    }
+
+    &.orange {
+        color: rgb(224, 146, 0);
+        // text-shadow: $outline;
+    }
+
+    &.yellow {
+        color: #f6d55c;
+    }
+
+    &.green {
+        color: lightgreen
+    }
+
+    &.blue {
+        color: rgb(142, 191, 255);
+    }
+
+    &.purple {
+        color: rgb(214, 143, 255)
+    }
+
+    &.pink {
+        color: pink
+    }
+
+    &.gold {
+        color: #FFD700
+    }
+
+    &.black {
+        color: rgb(172, 172, 172);
+        // text-shadow: $outline;
+    }
+
+    .selected-item-label {
+        margin-left: 10px;
+        font-weight: bold;
+    }
+}

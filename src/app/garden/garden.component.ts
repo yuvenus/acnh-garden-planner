@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import * as enums from '../../enums';
 import { Subscription } from 'rxjs';
-import { CellOptionsService } from '../services/cell-options.service';
+import { NavService } from '../services/nav.service';
 import { contentClass } from '../classes/content.class';
 import cloneDeep from 'lodash.clonedeep';
 
@@ -44,14 +44,14 @@ export class GardenComponent implements OnInit, OnDestroy {
         }
   }
 
-  constructor(private cellOptionsService: CellOptionsService) { }
+  constructor(private navService: NavService) { }
 
   ngOnInit(): void {
     if (this.grid.length === 0) {
       this.initGrid(this.gridSize);
     }
 
-    this.cellOptionsChangesSubscription = this.cellOptionsService.getCellOptionsChanges()
+    this.cellOptionsChangesSubscription = this.navService.getCellOptionsChanges()
       .subscribe(cellObj => {
         if (this.currentSelection.cellOption != cellObj.selectedCellOption) {
           this.currentSelection.cellOption = cellObj.selectedCellOption;

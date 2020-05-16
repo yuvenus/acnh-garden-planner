@@ -2,23 +2,23 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DisableColorPipe } from '../pipes/disable-color.pipe';
 import { imports } from '../../imports';
 
-import { CellOptionsComponent } from './cell-options.component';
+import { NavComponent } from './nav.component';
 import { CustomDropdownComponent } from '../custom-dropdown/custom-dropdown.component';
 
-describe('CellOptionsComponent', () => {
-  let component: CellOptionsComponent;
-  let fixture: ComponentFixture<CellOptionsComponent>;
+describe('NavComponent', () => {
+  let component: NavComponent;
+  let fixture: ComponentFixture<NavComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CellOptionsComponent, CustomDropdownComponent, DisableColorPipe ],
+      declarations: [ NavComponent, CustomDropdownComponent, DisableColorPipe ],
       imports: imports
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CellOptionsComponent);
+    fixture = TestBed.createComponent(NavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

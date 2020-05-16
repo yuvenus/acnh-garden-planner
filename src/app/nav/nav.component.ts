@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CellOptionsService } from '../services/cell-options.service';
+import { NavService } from '../services/nav.service';
 import { DisableColorPipe } from '../pipes/disable-color.pipe'
 import * as enums from '../../enums';
 import * as lists from '../../lists';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-cell-options',
-  templateUrl: './cell-options.component.html',
-  styleUrls: ['./cell-options.component.scss'],
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.scss'],
   providers: [DisableColorPipe]
 })
-export class CellOptionsComponent implements OnInit {
+export class NavComponent implements OnInit {
 
   cellOptions = lists.cellOptions;
   colorOptions = lists.colorOptions;
@@ -24,15 +25,23 @@ export class CellOptionsComponent implements OnInit {
 
   showClearConfirmation = false;
   showChangeGridConfirmation = false;
+  showHelpDialog = false;
+  showCreditsDialog = false;
+
+  cellChangesSubscription = new Subscription;
 
   newGridSize = 0;
 
   fileInput = null;
 
-  constructor(private cellOptionsService: CellOptionsService,
+  constructor(private navService: NavService,
               private disableColorPipe: DisableColorPipe) { }
 
   ngOnInit(): void {
+    this.cellChangesSubscription = this.navService.getCellOptionsChanges()
+      .subscribe(vals => {
+        this.newGridSize = vals.gridSize;
+      });
   }
 
   setCellOption(event) {
@@ -42,34 +51,34 @@ export class CellOptionsComponent implements OnInit {
       this.selectedColorOption = enums.colors.RED;
       this.setColorOption(this.selectedColorOption);
     }
-    this.cellOptionsService.setCellOptionsChanges('selectedCellOption', event)
+    this.navService.setCellOptionsChanges('selectedCellOption', event)
   }
 
   setColorOption(event) {
     this.selectedColorOption = event;
-    this.cellOptionsService.setCellOptionsChanges('selectedColorOption', event)
+    this.navService.setCellOptionsChanges('selectedColorOption', event)
   }
 
   clearGrid() {
-    this.cellOptionsService.setCellOptionsChanges('clearGridConfirmation', true);
-    this.cellOptionsService.setCellOptionsChanges('clearGridConfirmation', false);
+    this.navService.setCellOptionsChanges('clearGridConfirmation', true);
+    this.navService.setCellOptionsChanges('clearGridConfirmation', false);
     this.showClearConfirmation = false;
   }
 
   changeGridSize() {
-    this.cellOptionsService.setCellOptionsChanges('gridSize', +this.newGridSize);
+    this.navService.setCellOptionsChanges('gridSize', +this.newGridSize);
     this.showChangeGridConfirmation = false;
   }
 
   importConfig(event) {
-    this.cellOptionsService.setCellOptionsChanges('importConfig', {import: true, file: event});
-    this.cellOptionsService.setCellOptionsChanges('importConfig', {import: false, file: null});
+    this.navService.setCellOptionsChanges('importConfig', {import: true, file: event});
+    this.navService.setCellOptionsChanges('importConfig', {import: false, file: null});
 
     this.fileInput = null;
   }
 
   exportConfig() {
-    this.cellOptionsService.setCellOptionsChanges('exportConfig', true);
-    this.cellOptionsService.setCellOptionsChanges('exportConfig', false);
+    this.navService.setCellOptionsChanges('exportConfig', true);
+    this.navService.setCellOptionsChanges('exportConfig', false);
   }
 }

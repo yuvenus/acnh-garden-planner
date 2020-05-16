@@ -5,7 +5,7 @@ import * as enums from '../../enums';
 @Injectable({
   providedIn: 'root'
 })
-export class CellOptionsService {
+export class NavService {
   cellOptionsObj = {
     selectedCellOption: enums.cellContents.EMPTY,
     selectedColorOption: enums.colors.RED,
