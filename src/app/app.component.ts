@@ -11,12 +11,6 @@ export class AppComponent {
 
   constructor(private mouseDownService: MouseDownService) {}
 
-  @HostListener('mousedown', ['$event'])
-  onMousedown(event) {
-    this.mouseDownService.setMouseDown(true);
-    event.preventDefault();
-  }
-
   @HostListener('mouseup', ['$event'])
   onMouseUp(event) {
     this.mouseDownService.setMouseDown(false);

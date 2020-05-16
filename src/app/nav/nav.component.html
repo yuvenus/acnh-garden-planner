@@ -16,7 +16,7 @@
         <span class="material-icons">clear</span>
         <span class="nav-label">Clear</span>
     </div>
-    <div class="nav-item" (click)="showChangeGridConfirmation = true" pTooltip="{{newGridSize}} x {{newGridSize}}" tooltipPosition="bottom">
+    <div class="nav-item" (click)="showChangeGridConfirmation = true" pTooltip="{{currentGridSize}} x {{currentGridSize}}" tooltipPosition="bottom">
         <span class="material-icons">aspect_ratio</span>
         <span class="nav-label">Change Size</span>
     </div>
@@ -53,7 +53,7 @@
     </p-footer>
 </p-dialog>
 
-<p-dialog header="Change Grid Size (currently {{newGridSize}} x {{newGridSize}})" [(visible)]="showChangeGridConfirmation"[draggable]="false">
+<p-dialog header="Change Grid Size (currently {{currentGridSize}} x {{currentGridSize}})" [(visible)]="showChangeGridConfirmation"[draggable]="false">
     <div class="dialog-content">
         <div class="form-group">
             <label class="form-label">Changing the grid size may cause clipping to occur!</label>

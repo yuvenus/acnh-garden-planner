@@ -31,6 +31,7 @@ export class NavComponent implements OnInit {
   cellChangesSubscription = new Subscription;
 
   newGridSize = 0;
+  currentGridSize = 0;
 
   fileInput = null;
 
@@ -40,7 +41,10 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.cellChangesSubscription = this.navService.getCellOptionsChanges()
       .subscribe(vals => {
-        this.newGridSize = vals.gridSize;
+        this.currentGridSize = vals.gridSize;
+        if (this.newGridSize == 0) {
+          this.newGridSize = vals.gridSize;
+        }
       });
   }
 

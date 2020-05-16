@@ -3,6 +3,7 @@ import * as enums from '../../enums';
 import { Subscription } from 'rxjs';
 import { NavService } from '../services/nav.service';
 import { contentClass } from '../classes/content.class';
+import { MouseDownService } from '../services/mouse-down.service';
 import cloneDeep from 'lodash.clonedeep';
 
 @Component({
@@ -44,7 +45,18 @@ export class GardenComponent implements OnInit, OnDestroy {
         }
   }
 
-  constructor(private navService: NavService) { }
+  @HostListener('mousedown', ['$event'])
+  onMousedown(event) {
+    this.mouseDownService.setMouseDown(true);
+    event.preventDefault();
+  }
+
+  @HostListener('mouseup', ['$event'])
+  onMouseUp(event) {
+    this.mouseDownService.setMouseDown(false);
+  }
+
+  constructor(private navService: NavService, private mouseDownService: MouseDownService) { }
 
   ngOnInit(): void {
     if (this.grid.length === 0) {
