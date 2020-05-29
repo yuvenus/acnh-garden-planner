@@ -2,43 +2,21 @@
 
 @media only screen and (max-width: $sidenav-max-width) {
     .nav-end {
-        display: none !important;
-    }
-
-    .nav-beginning .nav-item .material-icons {
-        font-size: 16px;
+        display: flex !important;
     }
 }
 
-.nav-options-container {
-    width: 100vw;
-    height: calc(100% - 40px);
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    .nav-beginning {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        left: 0px;
-        height: 100%;
-        .nav-item {
-            height: 100%;
-            .material-icons {
-                font-size: 30px;
-                color: white;
-            }
-        }
-    }
+.sidenav-container {
+    height: 100vh;
+    background-color: rgba(10, 77, 1);
+    padding-top: 75px;
+    transition: 0.5s;
 
     .nav-item {
         display: flex;
         align-items: center;
         color: white;
-        padding: 20px 25px;
+        padding: 30px 30px;
         cursor: pointer;
 
         &:hover {
@@ -60,12 +38,12 @@
     }
 
     .nav-end {
-        display: flex;
-        height: 100%;
+        display: none;
+        width: 100%;
         align-items: center;
         justify-content: center;
         position: absolute;
-        right: 0px;
+        bottom: 0px;
 
         .nav-item {
             height: 100%;
@@ -75,7 +53,6 @@
         }
     }
 }
-
 
 .dialog-content {
     margin: 15px;

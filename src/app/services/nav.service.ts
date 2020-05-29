@@ -16,6 +16,7 @@ export class NavService {
   }
 
   cellOptionsChanges = new BehaviorSubject(this.cellOptionsObj);
+  isSidebarOpen = new BehaviorSubject(false);
 
   constructor() { }
 
@@ -26,5 +27,13 @@ export class NavService {
   setCellOptionsChanges(type, value) {
     this.cellOptionsObj[type] = value;
     this.cellOptionsChanges.next(this.cellOptionsObj);
+  }
+
+  getIsSidebarOpen() {
+    return this.isSidebarOpen;
+  }
+
+  setIsSidebarOpen(open) {
+    this.isSidebarOpen.next(open);
   }
 }

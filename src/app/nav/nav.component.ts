@@ -23,30 +23,15 @@ export class NavComponent implements OnInit {
   selectedCellOption = this.contentEnum.EMPTY;
   selectedColorOption = this.colorEnum.RED;
 
-  showClearConfirmation = false;
-  showChangeGridConfirmation = false;
   showHelpDialog = false;
   showCreditsDialog = false;
 
-  cellChangesSubscription = new Subscription;
-
-  newGridSize = 0;
-  currentGridSize = 0;
-
-  fileInput = null;
+  isSidebarOpen = false;
 
   constructor(private navService: NavService,
               private disableColorPipe: DisableColorPipe) { }
 
-  ngOnInit(): void {
-    this.cellChangesSubscription = this.navService.getCellOptionsChanges()
-      .subscribe(vals => {
-        this.currentGridSize = vals.gridSize;
-        if (this.newGridSize == 0) {
-          this.newGridSize = vals.gridSize;
-        }
-      });
-  }
+  ngOnInit(): void { }
 
   setCellOption(event) {
     this.selectedCellOption = event;
@@ -63,26 +48,8 @@ export class NavComponent implements OnInit {
     this.navService.setCellOptionsChanges('selectedColorOption', event)
   }
 
-  clearGrid() {
-    this.navService.setCellOptionsChanges('clearGridConfirmation', true);
-    this.navService.setCellOptionsChanges('clearGridConfirmation', false);
-    this.showClearConfirmation = false;
-  }
-
-  changeGridSize() {
-    this.navService.setCellOptionsChanges('gridSize', +this.newGridSize);
-    this.showChangeGridConfirmation = false;
-  }
-
-  importConfig(event) {
-    this.navService.setCellOptionsChanges('importConfig', {import: true, file: event});
-    this.navService.setCellOptionsChanges('importConfig', {import: false, file: null});
-
-    this.fileInput = null;
-  }
-
-  exportConfig() {
-    this.navService.setCellOptionsChanges('exportConfig', true);
-    this.navService.setCellOptionsChanges('exportConfig', false);
+  setIsSidebarOpen() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+    this.navService.setIsSidebarOpen(this.isSidebarOpen);
   }
 }

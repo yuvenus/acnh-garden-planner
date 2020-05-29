@@ -1,37 +1,22 @@
 <div class="nav-options-container">
-    <!-- pTooltip="flowers" tooltipPosition="bottom" -->
+    <div class="nav-beginning">
+        <div class="nav-item" (click)="setIsSidebarOpen()">
+            <span class="material-icons">menu</span>
+        </div>
+    </div>
+
     <div class="nav-item"> 
         <app-custom-dropdown [type]="'flowers'"
                              [options]="cellOptions" 
                              [selectedValue]="selectedCellOption" 
                              (selectedValueChange)="setCellOption($event)"></app-custom-dropdown>
     </div>
-    <!-- pTooltip="colors" tooltipPosition="bottom" -->
     <div class="nav-item">
         <app-custom-dropdown [type]="'colors'"
                              [options]="(colorOptions | disableColor:selectedCellOption)" 
                              [disabled]="selectedCellOption == contentEnum.EMPTY || selectedCellOption == contentEnum.FENCE"
                              [(selectedValue)]="selectedColorOption"
                              (selectedValueChange)="setColorOption($event)"></app-custom-dropdown>
-    </div>
-    <div class="nav-item" (click)="showClearConfirmation = true">
-        <span class="material-icons">clear</span>
-        <span class="nav-label">Clear</span>
-    </div>
-    <div class="nav-item" (click)="showChangeGridConfirmation = true" pTooltip="{{currentGridSize}} x {{currentGridSize}}" tooltipPosition="bottom">
-        <span class="material-icons">aspect_ratio</span>
-        <span class="nav-label">Change Size</span>
-    </div>
-    <div class="nav-item">
-        <div class="file-upload-button">
-            <span class="material-icons">get_app</span>
-            <span class="nav-label">Import</span>
-            <input type="file" accept=".txt" (change)="importConfig($event)" [(ngModel)]="fileInput" /> 
-        </div>
-    </div>
-    <div class="nav-item" (click)="exportConfig()">
-        <span class="material-icons">publish</span>
-        <span class="nav-label">Export</span>
     </div>
 
     <div class="nav-end">
@@ -44,30 +29,6 @@
         </div>
     </div>
 </div>
-
-<p-dialog header="Clear Grid?" [(visible)]="showClearConfirmation" [draggable]="false">
-    <div class="dialog-content">
-        Are you sure you want to clear the grid?
-    </div>
-    <p-footer>
-        <button pButton type="button" label="Clear" class="ui-button-danger" (click)="clearGrid()"></button>
-        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showClearConfirmation = false"></button>
-    </p-footer>
-</p-dialog>
-
-<p-dialog header="Change Grid Size (currently {{currentGridSize}} x {{currentGridSize}})" [(visible)]="showChangeGridConfirmation"[draggable]="false">
-    <div class="dialog-content">
-        <div class="form-group">
-            <label class="form-label">Changing the grid size may cause clipping to occur!</label>
-            <label class="form-label">Choose a number between 4 and 40.</label>
-            <input class="dialog-input" pInputText type="text" pKeyFilter="pint" [(ngModel)]="newGridSize">
-        </div>
-    </div>
-    <p-footer>
-        <button pButton type="button" label="Change" class="ui-button-success" (click)="changeGridSize()" [disabled]="newGridSize < 4 || newGridSize > 40"></button>
-        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showChangeGridConfirmation = false"></button>
-    </p-footer>
-</p-dialog>
 
 <p-dialog header="Help" [(visible)]="showHelpDialog" [draggable]="false">
     <div class="dialog-content">

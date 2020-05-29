@@ -1,0 +1,85 @@
+<div class="sidenav-container" *ngIf="isSidebarOpen" [@slideInOut]>
+    <div class="nav-item" id="clear-grid" (click)="showClearConfirmation = true">
+        <span class="material-icons">clear</span>
+        <span class="nav-label">Clear</span>
+    </div>
+    <div class="nav-item" id="change-grid" (click)="showChangeGridConfirmation = true" 
+         pTooltip="{{currentGridSize}} x {{currentGridSize}}" tooltipPosition="bottom">
+        <span class="material-icons">aspect_ratio</span>
+        <span class="nav-label">Change Size</span>
+    </div>
+    <div class="nav-item" id="import">
+        <div class="file-upload-button">
+            <span class="material-icons">get_app</span>
+            <span class="nav-label">Import</span>
+            <input type="file" accept=".txt" (change)="importConfig($event)" [(ngModel)]="fileInput" /> 
+        </div>
+    </div>
+    <div class="nav-item" id="export" (click)="exportConfig()">
+        <span class="material-icons">publish</span>
+        <span class="nav-label">Export</span>
+    </div>
+
+    <div class="nav-end">
+        <div class="nav-item" (click)="showHelpDialog = true" pTooltip="Help" tooltipPosition="bottom">
+            <span class="material-icons">help</span>
+        </div>
+
+        <div class="nav-item" (click)="showCreditsDialog = true" pTooltip="Credits" tooltipPosition="bottom">
+            <span class="material-icons">list</span>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Clear Grid?" [(visible)]="showClearConfirmation" [draggable]="false" id="clear-grid-dialog">
+    <div class="dialog-content">
+        Are you sure you want to clear the grid?
+    </div>
+    <p-footer>
+        <button pButton type="button" label="Clear" class="ui-button-danger" (click)="clearGrid()"></button>
+        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showClearConfirmation = false"></button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Change Grid Size (currently {{currentGridSize}} x {{currentGridSize}})" id="change-grid-dialog"
+          [(visible)]="showChangeGridConfirmation"[draggable]="false">
+    <div class="dialog-content">
+        <div class="form-group">
+            <label class="form-label">Changing the grid size may cause clipping to occur!</label>
+            <label class="form-label">Choose a number between 4 and 40.</label>
+            <input class="dialog-input" pInputText type="text" pKeyFilter="pint" [(ngModel)]="newGridSize">
+        </div>
+    </div>
+    <p-footer>
+        <button pButton type="button" label="Change" class="ui-button-success" (click)="changeGridSize()" [disabled]="newGridSize < 4 || newGridSize > 40"></button>
+        <button pButton type="button" label="Cancel" class="ui-button-secondary" (click)="showChangeGridConfirmation = false"></button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Help" [(visible)]="showHelpDialog" [draggable]="false" id="help-dialog"> 
+    <div class="dialog-content">
+        <p>You can undo using <b>ctrl/cmd + z</b> and redo using <b>ctrl/cmd + y</b>!</p>
+        <br>
+        <p>Hold and drag to fill in spaces without having to click every single one!</p>
+        <br>
+        <p>Flowers are sorted alphabetically and colors sorted (loosely) by order in the rainbow.</p>
+        <br>
+        <p>If you accidentally refresh or close the tab, don't worry! Your changes are cached as long as you don't clear your cache.</p>
+    </div>
+</p-dialog>
+
+<p-dialog header="Credits" [(visible)]="showCreditsDialog" [draggable]="false">
+    <div class="dialog-content">
+        <p>Thanks to these resources!</p>
+        <br>
+        <p><b>Animal Crossing Wiki</b> for the <a href="https://animalcrossing.fandom.com/wiki/Flower" target="_blank">flower images!</a></p>
+        <br>
+        <p><b>thenewhylton</b> for the <a href="https://www.deviantart.com/thenewhylton/art/Animal-Crossing-Grass-Remake-Spring-HD-439882381" target="_blank">main background image!</a></p>
+        <br>
+        <p><b>Cat with Monocle</b> for the <a href="https://catwithmonocle.com/news/2020/02/06/animal-crossing-new-horizons-nook-pattern-wallpaper" target="_blank">header background image!</a></p>
+        <br>
+        <p><b>Material Design</b> for most of the <a href="https://material.io/resources/icons/?style=baseline" target="_blank">icons!</a></p>
+        <br>
+        <p><b>PrimeNg</b> for the <a href="https://www.primefaces.org/primeng/showcase/#/" target="_blank">components!</a></p>
+    </div>
+</p-dialog>
